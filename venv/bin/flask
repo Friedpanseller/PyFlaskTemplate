@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/Users/leo/Desktop/SRA/Syllabus Management Software/venv/bin/python3.11" "$0" "$@"
-' '''
+#!/home/fried/Documents/Yoda/Hologram/venv/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys

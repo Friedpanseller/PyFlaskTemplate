@@ -1,9 +1,9 @@
 import argparse
 from waitress import serve
 
-app_name = "Digital Brief Generator"
+app_name = "Sample Application"
 
-print(f" * Starting {app_name}... Please wait for the link to appear")
+print(f"* Starting {app_name}... Please wait for the link to appear")
 
 # Instantiate the parser
 parser = argparse.ArgumentParser(description=app_name)

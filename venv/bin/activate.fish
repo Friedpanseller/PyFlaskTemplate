@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/leo/Desktop/SRA/Syllabus Management Software/venv"
+set -gx VIRTUAL_ENV "/home/fried/Documents/Yoda/Hologram/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

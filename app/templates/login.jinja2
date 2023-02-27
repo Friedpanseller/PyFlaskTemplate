@@ -1,0 +1,18 @@
+{% extends "base.jinja2" %}
+{% block title %} Login {% endblock %}
+{% block body %}
+<form action="/auth/login" method="POST" id="login_form">
+  Username: <input type="text" name="username" />
+  Password: <input type="text" name="password" />
+  <button type="button" onclick="send()">Submit</button>
+</form>
+<script>
+  function send() {
+    POST('/auth/login', 
+      {
+        'username': $('#login_form').find('input[name="username"]').val(),
+        'password': $('#login_form').find('input[name="password"]').val()
+      });
+  }
+</script>
+{% endblock %}

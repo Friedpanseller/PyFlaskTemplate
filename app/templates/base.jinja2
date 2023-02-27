@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %} - Sample Application</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static',filename='favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static',filename='favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static',filename='favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static',filename='favicon/site.webmanifest') }}">
+    <link
+      href="{{ url_for('static',filename='css/bootstrap.min.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static',filename='css/bootstrap-icons.css') }}"
+      rel="stylesheet"
+    />
+    <!-- <link
+      href="{{ url_for('static',filename='css/w3.css') }}"
+      rel="stylesheet"
+    /> -->
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.bundle.js') }}"></script>
+    
+    <style>
+      * {
+        scroll-behavior: auto !important;
+      }
+      html, body {
+        height: 100%;
+        background: linear-gradient(90deg, #001e45,#00468b );
+      }
+      body {
+        background: #eee;
+      }
+      .nav-link:hover {
+        color: #eee;
+      }
+      .page-wrap {
+        min-height: Calc(100% - 88px);
+        background: #eee;
+      }
+      .page-wrap:after {
+        content: "";
+        display: block;
+      }
+      footer, .page-wrap:after {
+        height: 16px; 
+      }
+      .modal-opener {
+        background: #eee;
+        transition: all 0.3s;
+      }
+      .modal-opener:hover {
+        background: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      {% block header %}
+      <nav
+        class="navbar navbar-expand-lg navbar-dark" 
+        style="background: linear-gradient(90deg, #001e45,#00468b); position: fixed; width: 100%; top: 0; box-shadow: 0px 1px 6px 0px rgba(0,0,0,0.65);"
+      >
+        <div class="container-fluid">
+          <img src="{{ url_for('static',filename='favicon/android-chrome-512x512.png') }}" height="32" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="navbar-brand">
+            Sample Application
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item" {% if brief and brief.id %}style="border-right: 1px solid grey;"{% endif %}>
+                <a class="nav-link" href="/">Home&nbsp;&nbsp;</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div style="height: 56px">&nbsp;</div>
+      {% endblock %}
+    </header>
+    <div class="page-wrap">
+    {% block body %}{% endblock %}
+    </div>
+    <footer>
+      {% block footer %}
+        <nav
+          class="navbar navbar-expand-lg navbar-dark"
+          style="background: linear-gradient(90deg, #001e45,#00468b );"
+        ></nav>
+      {% endblock %}
+    </footer>
+  </body>
+  <script>
+    var tooltipTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    );
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+      var scrollpos = localStorage.getItem("scrollpos");
+      if (scrollpos) window.scrollTo(0, scrollpos);
+    });
+
+    window.onbeforeunload = function (e) {
+      localStorage.setItem("scrollpos", window.scrollY);
+    };
+    const GET = (url, obj = {}) => {
+      return fetch(`${url}?data=${encodeURIComponent(JSON.stringify(obj))}`, {
+        method: "GET",
+        mode: "cors",
+        credentials: "include"
+      })
+    }
+    const POST = (url, obj = {}) => {
+      return fetch(`${url}`, {
+        body: JSON.stringify(obj),
+        method: "POST",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })
+    }
+  </script>
+</html>
