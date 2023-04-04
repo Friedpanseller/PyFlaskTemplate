@@ -19,4 +19,5 @@ tqdm==4.64.1
 typing_extensions==4.5.0
 ua-parser==0.16.1
 user-agents==2.2.0
+waitress==2.1.2
 Werkzeug==2.2.3
