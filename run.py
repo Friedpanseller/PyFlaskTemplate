@@ -14,7 +14,7 @@ parser.add_argument('-d', action='store_true',
 parser.add_argument('-port', type=int,
                     help='Specify a port to run the application on')
 
-parser.add_argument('-host', type=int,
+parser.add_argument('-host', type=str,
                     help='Specify the hostname/ip to run the application on')
 
 args = parser.parse_args()
